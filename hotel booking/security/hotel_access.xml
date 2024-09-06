@@ -1,0 +1,48 @@
+<odoo>
+
+    <record model="ir.module.category" id="hotel_book_category">
+        <field name="name">roles</field>
+        <field name="description">Test123</field>
+        <field name="sequence">1</field>
+    </record>
+
+    <record id="group_user" model="res.groups">
+        <field name="name">User</field>
+        <field name="category_id" ref="hotel_book_category"/>
+    </record>
+
+    <record id="group_supervisor" model="res.groups">
+        <field name="name">Supervisor</field>
+        <field name="implied_ids" eval="[(4, ref('hotel_book_order.group_user'))]"/>
+        <field name="category_id" ref="hotel_book_category"/>        
+    </record>
+
+    <record id="group_manager" model="res.groups">
+        <field name="name">Manager</field>
+        <field name="implied_ids" eval="[(4, ref('hotel_book_order.group_supervisor'))]"/>
+        <field name="category_id" ref="hotel_book_category"/>
+    </record>
+
+<!-- Portal Access Rules-->
+    <record id="book_hotel_user_rule" model="ir.rule">
+        <field name="name">Access Rule for Users</field>
+        <field name="model_id" ref="hotel_book_order.model_book_hotel"/>
+        <field name="groups" eval="[(4, ref('hotel_book_order.group_user'))]"/>
+        <field name="domain_force">[('orang_sales', '=', user.id)]</field>
+    </record>
+
+    <record id="book_hotel_supervisor_rule" model="ir.rule">
+        <field name="name">Access Rule for Supervisor</field>
+        <field name="model_id" ref="hotel_book_order.model_book_hotel"/>
+        <field name="groups" eval="[(4, ref('hotel_book_order.group_supervisor'))]"/>
+        <field name="domain_force">[('sales_team', '=', user.info_team)]</field>
+    </record>
+
+    <record id="book_hotel_manager_rule" model="ir.rule">
+        <field name="name">Access Rule for manager</field>
+        <field name="model_id" ref="hotel_book_order.model_book_hotel"/>
+        <field name="groups" eval="[(4, ref('hotel_book_order.group_manager'))]"/>
+        <field name="domain_force">[(1,'=',1)]</field>
+    </record>
+
+</odoo>

@@ -1,0 +1,24 @@
+<odoo>
+    <record id="view_info_team" model="ir.ui.view">
+        <field name="name">info team dari res users</field>
+        <field name="model">res.users</field>
+        <field name="inherit_id" ref="base.view_users_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='company_id']" position="after">
+                <field name="info_team"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="action_info_team" model="ir.actions.act_window">
+        <field name="name">User Team dari res users</field>
+        <field name="res_model">res.users</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="view_info_team"/>
+    </record>
+
+    <menuitem id="menu_info_team" 
+    name="User Team Settings" 
+    parent="base.menu_users" 
+    sequence="50"/>
+</odoo>

@@ -1,0 +1,61 @@
+<odoo>
+
+    <!-- Define a sequence for the order_id -->
+    <record id="sequence_book_hotel" model="ir.sequence">
+        <field name="name">Booking Hotel Sequence</field>
+        <field name="code">book.hotel.sequence</field>
+        <field name="prefix">ORD/</field>
+        <field name="padding">3</field>
+    </record>
+    
+    <!-- Tree View -->
+    <record id="view_hotel_tree" model="ir.ui.view">
+        <field name="name">hotel_appointment_tree</field>
+        <field name="model">book.hotel</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="customer_id"/>
+                <field name="name"/>
+                <field name="fasilitas_kamar"/>
+                <field name="checkin_date"/>
+                <field name="checkout_date"/>
+                <field name="harga_kamar"/>
+                <field name="status"/>
+                <field name="duration"/>
+                <field name="note"/>
+                <!-- Add Confirm Transaction button -->
+                <button string="Confirm Transaction" type="object" name="confirm_transaction" class="oe_highlight"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Form View -->
+    <record id="view_hotel_appointment_form" model="ir.ui.view">
+        <field name="name">kamar_hotel_date</field>
+        <field name="model">book.hotel</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="customer_id"/>
+                        <field name="name"/>
+                        <field name="checkin_date"/>
+                        <field name="checkout_date"/>
+                        <field name="duration"/>
+                        <field name="note"/>
+                        <!-- Add Confirm Transaction button -->
+                        <button string="Confirm Transaction" type="object" name="confirm_transaction" class="oe_highlight"/>
+                    </group>
+                    <notebook>
+                        <page string="Fasilitas Kamar">
+                            <group>
+                                <field name="fasilitas_kamar"/>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    
+</odoo>

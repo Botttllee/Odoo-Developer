@@ -1,0 +1,108 @@
+<odoo>
+
+    <record id="action_view_booking" model="ir.actions.act_window">
+        <field name="name">Booking kamar disini</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">book.hotel</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your first booking!
+            </p>
+        </field>
+    </record>    
+
+    <record id="action_view_kamar" model="ir.actions.act_window">
+        <field name="name">info mengenai kamar hotel yang ada</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">kamar.hotel</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your first booking!
+            </p>
+        </field>
+    </record>
+
+
+    <record id="action_view_tipe" model="ir.actions.act_window">
+        <field name="name">List Tipe Kamar Beserta Fasilitas Yang Tersedia</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">tipe.kamar</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your first type of room
+            </p>
+        </field>
+    </record>      
+
+    <record id="action_view_fasilitas" model="ir.actions.act_window">
+        <field name="name">List Fasilitas yang ada di hotel</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">fasilitas.hotel</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+               Add fasilitas kamar
+            </p>
+        </field>
+    </record>
+
+    <record id="action_view_sales_team" model="ir.actions.act_window">
+        <field name="name">Sales Team</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">sales.team</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+               Add sales team
+            </p>
+        </field>
+    </record>    
+
+    <!--    Testing -->
+
+    <menuitem id="Menu_Hotel_book_root" 
+    name="Hotel Order" 
+    sequence="0"/>
+
+    <menuitem id="Menu_Hotel_book_master" 
+    name="Booking" 
+    action="action_view_booking" 
+    parent="Menu_Hotel_book_root" 
+    sequence="0"/>
+
+    <menuitem id="Menu_Configuration_master" 
+    name="Configuration" 
+    parent="Menu_Hotel_book_root" 
+    sequence="1"/>
+
+    <menuitem id="Menu_book_hotel" 
+    name="Kamar hotel" 
+    parent="Menu_Configuration_master" 
+    action="action_view_kamar" 
+    sequence="1" 
+    groups="hotel_book_order.group_supervisor,hotel_book_order.group_manager"/>
+
+    <menuitem id="Menu_tipe" 
+    name="Tipe kamar dan fasilitas hotel" 
+    parent="Menu_Configuration_master" 
+    action="action_view_tipe" 
+    sequence="2" 
+    groups="hotel_book_order.group_supervisor,hotel_book_order.group_manager"/>
+
+    <menuitem id="Menu_Fasilitas" 
+    name="Fasilitas hotel" 
+    action="action_view_fasilitas" 
+    parent="Menu_Configuration_master" 
+    sequence="3" 
+    groups="hotel_book_order.group_supervisor,hotel_book_order.group_manager"/>
+
+    <menuitem id="menu_sales_team" 
+    name="Sales Team" 
+    action="action_view_sales_team" 
+    sequence="4" 
+    parent="Menu_Configuration_master" 
+    groups="hotel_book_order.group_supervisor,hotel_book_order.group_manager"/>
+</odoo>

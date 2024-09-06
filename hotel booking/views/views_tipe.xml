@@ -1,0 +1,43 @@
+<odoo>
+
+   <record id="view_form_tipe" model="ir.ui.view">
+    <field name="name">view tipe</field>
+    <field name="model">tipe.kamar</field>
+    <field name="arch" type="xml">
+        <form string="form">
+            <sheet>
+              <group>
+               <field name="name_tipe"/>
+               <field name="harga"/>
+               </group>
+                   <notebook>
+                        <page string="Fasilitas Kamar">
+                            <group>
+                                <field name="fasilitas_kamar" widget="many2many_tags"/>
+                            </group>
+                        </page>
+                    </notebook>
+            </sheet>
+        </form>
+    </field>
+</record>
+
+
+        <record id="view_tree_tipe" model="ir.ui.view">
+            <field name="name">view tree tipe</field>
+            <field name="model">tipe.kamar</field>
+            <field name="arch" type="xml">
+                <tree string="Tree kamar">
+                    <field name="name_tipe"/>
+                    <field name="fasilitas_kamar" widget="many2many_tags"/>
+                    <field name="harga"/>
+                </tree>
+            </field>
+        </record>  
+
+
+
+
+
+
+</odoo>

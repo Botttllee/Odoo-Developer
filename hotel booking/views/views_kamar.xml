@@ -1,0 +1,60 @@
+<odoo>
+  <data>
+   
+<record id="view_form_kamar" model="ir.ui.view">
+    <field name="name">kamar.hotel.form</field>
+    <field name="model">kamar.hotel</field>
+    <field name="arch" type="xml">
+        <form>
+            <sheet>
+                <group>
+                    <field name="name"/>
+                    <field name="tipe_kamar" widget="selection"/>
+                    <field name="harga_kamar"/>
+                    <field name="lantai"/>
+                    <field name="panjang_kamar"/>
+                    <field name="lebar_kamar"/>
+                    <field name="luas_kamar" readonly="1"/>
+                    <field name="status_kamar"/>
+                    <!-- <field name="transaksi_booking"/> -->
+                </group>
+                <notebook>
+                    <page string="Fasilitas Kamar">
+                        <group>
+                            <field name="fasilitas_kamar"/>
+                        </group>
+                    </page>
+                    <page string="Transaksi">
+                        <group>
+                            <field name="history_ids"/>
+                        </group>
+                    </page>                    
+                </notebook>
+            </sheet>
+        </form>
+    </field>
+  </record>
+
+  <record id="view_tree_kamar" model="ir.ui.view">
+        <field name="name">view tree kamar</field>
+        <field name="model">kamar.hotel</field>
+        <field name="arch" type="xml">
+            <tree string="Tree kamar">
+                <field name="name"/>
+                <field name="tipe_kamar"/>
+                <field name="fasilitas_kamar"/>
+                <field name="harga_kamar"/> 
+                <field name="lantai"/>
+                <field name="lebar_kamar"/>
+                <field name="panjang_kamar"/>
+                <field name="luas_kamar"/>
+                <field name="status_kamar"/> 
+                <field name="transaksi_booking"/> 
+                <field name="description"/>
+            </tree>
+        </field>
+  </record>    
+
+
+  </data>
+</odoo>

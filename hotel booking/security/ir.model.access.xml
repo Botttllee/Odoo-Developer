@@ -1,0 +1,32 @@
+<odoo>
+    <!-- Add Access Controls -->
+    <record id="access_user" model="ir.model.access.csv">
+        <field name="name">Access User</field>
+        <field name="model_id" ref="hotel_book_order.model_book_hotel"/>
+        <field name="group_id" ref="hotel_book_order.group_user"/>
+        <field name="perm_read" eval="1"/>
+        <field name="perm_write" eval="1"/>
+        <field name="perm_create" eval="1"/>
+        <field name="perm_unlink" eval="1"/>
+    </record>
+
+    <record id="access_manager" model="ir.model.access.csv">
+        <field name="name">Access Manager</field>
+        <field name="model_id" ref="hotel_book_order.model_book_hotel"/>
+        <field name="group_id" ref="hotel_book_order.group_manager"/>
+        <field name="perm_read" eval="1"/>
+        <field name="perm_write" eval="1"/>
+        <field name="perm_create" eval="1"/>
+        <field name="perm_unlink" eval="1"/>
+    </record>
+
+    <record id="access_supervisor" model="ir.model.access.csv">
+        <field name="name">Access Supervisor</field>
+        <field name="model_id" ref="hotel_book_order.model_book_hotel"/>
+        <field name="group_id" ref="hotel_book_order.group_supervisor"/>
+        <field name="perm_read" eval="1"/>
+        <field name="perm_write" eval="1"/>
+        <field name="perm_create" eval="1"/>
+        <field name="perm_unlink" eval="1"/>
+    </record>
+</odoo>
